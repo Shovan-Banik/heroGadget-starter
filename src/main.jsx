@@ -5,32 +5,33 @@ import App from './App'
 import {
     createBrowserRouter,
     RouterProvider,
-  } from "react-router-dom";
+} from "react-router-dom";
 import About from './components/About';
 import Home from './components/Home';
 import ErrorPage from './components/ErrorPage';
 import Shop from './components/Shop';
 import Cart from './components/Cart';
 import { productsAndCartData } from './loaders/getCart&ProductData';
-  const router=createBrowserRouter([
+import { Toaster } from 'react-hot-toast';
+const router = createBrowserRouter([
     {
         path: '/',
         element: <App></App>,
         errorElement: <ErrorPage></ErrorPage>,
         loader: productsAndCartData,
-        children:[
+        children: [
             {
                 path: '/',
                 element: <Home></Home>
             },
             {
-                path:'/shop',
-                element:<Shop></Shop>,
-                loader: ()=>fetch('products.json')
+                path: '/shop',
+                element: <Shop></Shop>,
+                loader: () => fetch('products.json')
             },
             {
                 path: '/cart',
-                element:<Cart></Cart>,
+                element: <Cart></Cart>,
                 loader: productsAndCartData,
             },
             {
@@ -39,6 +40,11 @@ import { productsAndCartData } from './loaders/getCart&ProductData';
             }
         ]
     }
-  ])
+])
 
-ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router}/>)
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <>
+        <RouterProvider router={router} />
+        <Toaster></Toaster>
+    </>
+)

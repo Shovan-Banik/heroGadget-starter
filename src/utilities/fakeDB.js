@@ -27,7 +27,7 @@ const getStoredCart=()=>{
     return shoppingCart;
 }
 // remove specific element from local storage
-const removeFromDb=()=>{
+const removeFromDb=(id)=>{
     const storedCart=localStorage.getItem('shopping-cart');
     if(storedCart){
         const shoppingCart=JSON.parse(storedCart);

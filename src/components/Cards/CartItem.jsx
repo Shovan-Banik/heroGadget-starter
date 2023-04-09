@@ -27,7 +27,7 @@ const CartItem = ({ product,handleRemoveItem }) => {
           </div>
           <div className='flex text-sm divide-x'>
             <button
-              onClick={() => handleRemoveItem(id)}
+              onClick={() =>handleRemoveItem(id)}
               type='button'
               className='flex items-center px-2 py-1 pl-0 space-x-1'
             >
